@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Battle Arena</title>
+    <link rel="stylesheet" href="style-reset.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="body">
+        <header>
+            <img class="logo" title="Reset Game" id="btn-reset" src="./assets/Pokemon_logo.png" alt="Pokemon">
+        </header>
+
+        <div class="playground">
+            <!-- Pikachu -->
+            <div class="pokemon character" id="poke-character">
+                <span class="lvl">Lv. 1</span>
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png"
+                    class="sprite" alt="Pikachu">
+                <div class="details">
+                    <h2 class="name" id="name-character">Pikachu</h2>
+                    <div class="hp">
+                        <div class="bar">
+                            <div class="health" id="progressbar-character" style="width: 100%;"></div>
+                        </div>
+                        <span class="text" id="health-character">100 / 100</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-panel">
+                <div id="turn-indicator" class="turn-badge">Your Turn!</div>
+                <div class="control" id="control-buttons">
+                </div>
+            </div>
+
+            <!-- Charmander -->
+            <div class="pokemon enemy" id="poke-enemy">
+                <span class="lvl">Lv. 1</span>
+                <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png"
+                    class="sprite" alt="Charmander">
+                <div class="details">
+                    <h2 class="name" id="name-enemy">Charmander</h2>
+                    <div class="hp">
+                        <div class="bar">
+                            <div class="health" id="progressbar-enemy" style="width: 100%;"></div>
+                        </div>
+                        <span class="text" id="health-enemy">100 / 100</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="logs" class="logs-container"></div>
+    </div>
+
+    <div class="catch_screen"></div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
