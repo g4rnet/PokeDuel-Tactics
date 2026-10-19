@@ -1,0 +1,79 @@
+/* ==========================================================
+   style-cards.css — draft tags, passives, statuses, Trainer Hub
+   ========================================================== */
+
+/* Відобразити рядок аури та статусів під ім'ям */
+.tags-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; min-height: 0; }
+.aura-tag, .status-tag { font-size: 11px; font-weight: 700; color: #475569; }
+.aura-tag:empty, .status-tag:empty { display: none; }
+
+/* Вирівняти активні пасивні картки під шкалою HP */
+.passives { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; margin-top: 4px; }
+.passives:empty { display: none; }
+.passive-icon {
+  font-size: 15px; line-height: 1; padding: 3px 5px; border-radius: 8px;
+  background: #f1f5f9; border: 1px solid #cbd5e1; cursor: help;
+}
+
+/* Стилізувати теги категорій карток вибору */
+.choice-tag {
+  display: inline-block; font-size: 11px; font-weight: 800; padding: 2px 8px;
+  border-radius: 999px; margin: 2px 0 4px; background: #e2e8f0; color: #334155;
+}
+.choice-tag.cat-offense { background: #fee2e2; color: #b91c1c; }
+.choice-tag.cat-defense { background: #dcfce7; color: #15803d; }
+.choice-tag.cat-tactics { background: #e0e7ff; color: #4338ca; }
+
+.log-note { font-size: 0.92em; color: #475569; }
+
+/* Оформити головну панель тренера (Trainer Hub) */
+.hub-box { max-width: 680px; width: 94%; text-align: left; max-height: 90vh; overflow-y: auto; }
+.hub-note { font-size: 12px; color: #64748b; margin: 2px 0 8px; }
+.hub-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin: 8px 0 12px; }
+.hub-tab {
+  padding: 8px 14px; border-radius: 10px; border: 2px solid #cbd5e1; background: #fff;
+  font-weight: 800; cursor: pointer;
+}
+.hub-tab.active { border-color: #aa3bff; color: #aa3bff; }
+.hub-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; }
+.hub-grid.talents { grid-template-columns: 1fr; }
+.hub-card {
+  display: flex; flex-direction: column; gap: 6px; padding: 10px; border-radius: 12px;
+  border: 2px solid #e2e8f0; background: #fff;
+}
+.hub-card.selected { border-color: #38bdf8; }
+.hub-card span { font-size: 12px; color: #475569; }
+.talent-levels { margin: 0; padding-left: 0; list-style: none; font-size: 12px; color: #475569; }
+.talent-levels li { margin: 3px 0; }
+.talent-levels li.done { color: #15803d; font-weight: 700; }
+.hub-btn {
+  padding: 8px 12px; border-radius: 10px; border: 2px solid #cbd5e1; background: #fff;
+  font-weight: 800; cursor: pointer;
+}
+.hub-btn.buy { border-color: #f59e0b; color: #b45309; }
+.hub-btn.primary { background: #38bdf8; border-color: #38bdf8; color: #fff; }
+.hub-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.hub-footer { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+
+/* Центрувати екран вибору мови */
+.lang-screen { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+.lang-box { background: #fff; padding: 28px; border-radius: 20px; text-align: center; max-width: 420px; width: 92%; }
+.lang-box .logo { max-width: 220px; margin: 0 auto 12px; display: block; }
+.lang-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
+.lang-buttons .hub-btn { font-size: 18px; padding: 12px 20px; }
+
+/* Налаштувати стилі форми авторизації та таблиці лідерів */
+.auth-box { text-align: left; }
+.auth-box .hub-tabs { margin: 8px 0 12px; }
+.auth-field { display: flex; flex-direction: column; gap: 4px; margin: 10px 0; font-size: 13px; font-weight: 700; color: #334155; }
+.auth-field input, .auth-field select {
+  padding: 10px 12px; border-radius: 10px; border: 2px solid #cbd5e1; font-size: 16px; background: #fff;
+}
+.auth-field input:focus, .auth-field select:focus { outline: none; border-color: #38bdf8; }
+.auth-error { color: #dc2626; font-weight: 700; font-size: 13px; margin: 6px 0; }
+.auth-links { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 12px; }
+.auth-user { font-weight: 800; font-size: 13px; color: #334155; }
+.lb-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 14px; }
+.lb-table th, .lb-table td { padding: 6px 8px; text-align: left; border-bottom: 1px solid #e2e8f0; }
+.lb-table th { color: #64748b; font-size: 12px; text-transform: uppercase; }
+.lb-table tr.me td { background: #e0f2fe; font-weight: 800; }

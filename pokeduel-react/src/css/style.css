@@ -1,0 +1,567 @@
+/* ==========================================================
+   Головні стилі документа, шапки та ігрового поля
+   ========================================================== */
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 100vh;
+    font-family: "Heebo", sans-serif;
+    color: #1e293b;
+    text-align: center;
+    user-select: none;
+    overflow-x: hidden;
+}
+
+body {
+    position: relative;
+    background: url(../assets/Parkscene_Background.png) center bottom repeat-x,
+                url(../assets/SkyDay.png) center top / cover !important;
+}
+
+.body {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: space-between;
+    padding: 12px 16px 24px;
+    box-sizing: border-box;
+}
+
+.catch_screen {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(45deg, #d2ffde, #ceefff, #ded1ff);
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+/* ==========================================================
+   Шапка та елементи HUD
+   ========================================================== */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo {
+    max-width: 220px;
+    margin: 0 auto !important;
+    display: inline-block !important;
+    cursor: pointer;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 4px 12px rgba(255, 203, 5, 0.4));
+}
+
+.hud {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+}
+
+.wave-badge,
+.click-counter,
+.codex-btn {
+    padding: 6px 16px;
+    font-size: 14px;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #ffc55b;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.click-counter { border-color: #cbd5e1; }
+
+.codex-btn {
+    border-color: #38bdf8;
+    color: #0284c7;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.codex-btn:hover {
+    background: #e0f2fe;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(56, 189, 248, 0.25);
+}
+
+/* ==========================================================
+   Ігрове поле та картки покемонів
+   ========================================================== */
+.playground {
+    width: min(100%, 1100px);
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin: 16px auto !important;
+    padding: 0 14px;
+    gap: 20px;
+}
+
+/* Оформити зовнішній вигляд карток бійців */
+.pokemon {
+    position: relative !important;
+    width: 220px !important;
+    height: 310px !important;
+    min-width: 220px !important;
+    background: url(../assets/card.svg) no-repeat center / contain !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.12));
+    transition: transform 0.3s ease;
+}
+
+.pokemon::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 45%;
+    left: 12%;
+    width: 76%;
+    height: 50%;
+    transform: translateY(-50%);
+    background: url(../assets/pockeball.svg) no-repeat center / contain;
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+.pokemon .lvl {
+    position: absolute;
+    top: 17px;
+    left: 22px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #00b8ff;
+    margin: 0 !important;
+}
+
+.pokemon .type-tag {
+    position: absolute;
+    max-width: 110px;
+    top: 18px;
+    right: 25px !important;
+    font-size: 10px !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #64748b;
+}
+
+.pokemon .sprite {
+    position: absolute !important;
+    top: 38% !important;
+    left: 50% !important;
+    max-width: 110px !important;
+    max-height: 110px !important;
+    transform: translate(-50%, -50%) !important;
+    display: inline-block !important;
+    margin: 0 !important;
+    filter: drop-shadow(0 6px 8px rgba(0,0,0,0.15));
+}
+
+.pokemon .details {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.pokemon .details .name {
+    display: block;
+    margin: 0 !important;
+    font-size: 18px;
+    font-weight: 800;
+    color: #0f172a;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 170px;
+}
+
+.pokemon .details .hp {
+    width: 100%;
+    margin: 0 !important;
+}
+
+.pokemon .details .hp .text {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: #334155;
+    margin-bottom: 3px;
+}
+
+.pokemon .details .hp .bar {
+    height: 14px;
+    border-radius: 7px;
+    background: #e2e8f0;
+    border: 2px solid #cbd5e1;
+    overflow: hidden;
+}
+
+.pokemon .details .hp .bar .health {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #22c55e, #4ade80);
+    transition: width 0.3s ease, background 0.3s ease;
+}
+
+.pokemon .details .hp .bar .health.low { background: linear-gradient(to right, #f59e0b, #fbbf24); }
+.pokemon .details .hp .bar .health.critical { background: linear-gradient(to right, #ef4444, #f87171); }
+
+.charge {
+    height: 6px;
+    margin-top: 4px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 6px;
+    width: 100%;
+}
+
+.charge-fill {
+    width: 0;
+    height: 100%;
+    background: linear-gradient(to right, #a78bfa, #7c3aed);
+    transition: width 0.3s ease;
+}
+
+.charge-fill.ready { 
+    background: linear-gradient(to right, #fde047, #f59e0b); 
+    animation: pulse 0.8s ease-in-out infinite;
+}
+
+/* ==========================================================
+   Панель керування та сітка атак
+   ========================================================== */
+.control-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    flex: 1 1 320px;
+    max-width: 620px;
+    min-width: 280px;
+    margin: 0 auto;
+}
+
+.turn-badge {
+    padding: 8px 22px;
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #1e293b;
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #38bdf8;
+    border-radius: 18px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    max-width: 100%;
+    overflow-wrap: anywhere;
+}
+
+.control {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+}
+
+.button-guard {
+    grid-column: span 2;
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid #60a5fa;
+    border-radius: 12px;
+    background: #eff6ff;
+    color: #1d4ed8;
+    font-weight: 800;
+    font-size: 15px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(37, 99, 235, 0.1);
+    transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+.button-guard:hover:not(:disabled) { 
+    background: #dbeafe; 
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 14px rgba(37, 99, 235, 0.2);
+}
+.button-guard:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+
+.button-attack {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 4px;
+    gap: 6px;
+    width: 100%;
+    min-height: 80px;
+    padding: 10px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1e293b;
+    background: rgba(255, 255, 255, 0.96);
+    border: 2px solid #cbd5e1;
+    border-radius: 14px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.button-attack:hover:not(:disabled) {
+    background: #ffffff;
+    border-color: #38bdf8;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(56, 189, 248, 0.28);
+}
+
+.button-attack:disabled {
+    opacity: 0.5;
+    background: #f1f5f9;
+    border-color: #e2e8f0;
+    color: #94a3b8;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.button-attack.ult {
+    grid-column: span 2;
+    border-color: #a78bfa;
+    background: linear-gradient(to right, rgba(255,255,255,0.98), rgba(237,233,254,0.85));
+}
+.button-attack.ult:hover:not(:disabled) { 
+    border-color: #7c3aed; 
+    box-shadow: 0 6px 14px rgba(124, 58, 237, 0.35); 
+}
+
+.attack-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 800;
+    color: #0f172a;
+    font-size: 14px;
+}
+
+.move-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    margin-right: 5px;
+    border-radius: 7px;
+    background: #e0edff;
+    color: #1d4ed8;
+    font-size: 16px;
+    font-weight: 900;
+    flex: 0 0 auto;
+}
+
+.attack-stats {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4px;
+    font-size: 11px;
+    flex-wrap: wrap;
+}
+
+.badge-dmg { padding: 2px 5px; font-weight: 700; color: #dc2626; background: #fee2e2; border-radius: 5px; }
+.badge-pp { padding: 2px 5px; font-weight: 700; color: #0284c7; background: #e0f2fe; border-radius: 5px; }
+.badge-cd { padding: 2px 5px; font-weight: 700; color: #d97706; background: #fef3c7; border-radius: 5px; }
+.badge-acc { color: #475569; background: #e2e8f0; padding: 2px 6px; border-radius: 6px; font-weight: 700; }
+.badge-crit { 
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 3px 6px;
+    border-radius: 6px;
+    background: #fff0d6; 
+    color: #9a3412; 
+    font-size: 11px;
+    font-weight: 800; 
+    white-space: nowrap;
+}
+.badge-uses { color: #15803d; background: #dcfce7; padding: 2px 6px; border-radius: 6px; font-weight: 700; }
+.badge-ult { color: #6d28d9; background: #ede9fe; padding: 2px 6px; border-radius: 6px; font-weight: 700; }
+
+.badge-matchup { display: inline-flex; align-items: center; padding: 3px 6px; border-radius: 6px; font-size: 11px; font-weight: 900; white-space: nowrap; }
+.badge-matchup.immune { background: #fee2e2; color: #b91c1c; }
+.badge-matchup.good { background: #dcfce7; color: #166534; }
+.badge-matchup.bad { background: #e2e8f0; color: #475569; }
+
+/* ==========================================================
+   Контейнер логів бою
+   ========================================================== */
+.logs-container {
+    width: min(640px, calc(100% - 28px));
+    min-height: 120px;
+    max-height: 120px;
+    margin: 10px auto 0 !important;
+    padding: 10px 14px;
+    overflow-y: auto;
+    overflow-wrap: anywhere;
+    overscroll-behavior: contain;
+    font-size: 12px;
+    text-align: left;
+    color: #334155;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(8px);
+}
+
+.logs-container p {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin: 3px 0 !important;
+    padding: 3px 6px;
+    border-bottom: 1px dashed #cbd5e1;
+    line-height: 1.35;
+}
+
+.logs-container p > span {
+    min-width: 0;
+}
+
+.log-icon {
+    width: 15px;
+    height: 15px;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+/* ==========================================================
+   Спливаючі вікна, оверлеї та модалки
+   ========================================================== */
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(4px);
+}
+
+.overlay.open { display: flex; }
+
+.overlay-box {
+    width: 100%;
+    max-width: 680px;
+    padding: 24px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+}
+
+.overlay-box h2 { 
+    margin-bottom: 6px; 
+    font-size: 22px; 
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.overlay-box p { 
+    margin-bottom: 16px; 
+    color: #475569; 
+    font-size: 14px; 
+}
+
+.choices {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    padding: 8px 4px;
+    max-height: 420px;
+    overflow-y: auto;
+}
+
+.choice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 5px;
+    width: 190px;
+    padding: 14px;
+    cursor: pointer;
+    background: #fffbeb;
+    border: 2px solid #ffc55b;
+    border-radius: 14px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.25s ease;
+    box-sizing: border-box;
+}
+
+.choice:hover:not(:disabled) {
+    transform: translateY(-3px);
+    border-color: #f59e0b;
+    box-shadow: 0 8px 18px rgba(255, 197, 91, 0.45);
+}
+
+.choice.locked {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    box-shadow: none;
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.choice-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin: 0 auto 7px;
+    border-radius: 14px;
+    background: linear-gradient(145deg, #eff6ff, #dbeafe);
+    box-shadow: inset 0 0 0 1px #bfdbfe;
+    font-size: 25px;
+}
+
+.choice img {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto;
+    object-fit: contain;
+}
+
+.choice b {
+    font-size: 14px;
+    color: #0f172a;
+}
+
+.choice span:not(.choice-icon) { 
+    font-size: 13px; 
+    color: #475569; 
+    line-height: 1.35; 
+}
